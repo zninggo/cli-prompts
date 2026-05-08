@@ -48,7 +48,8 @@ function Write-ManagedPromptFile {
 
     $beginMarker = "<!-- BEGIN cli-prompts:$Name -->"
     $endMarker = "<!-- END cli-prompts:$Name -->"
-    [string]$sourceContent = Get-Content -Path $Source -Raw
+    $rawSourceContent = Get-Content -Path $Source -Raw
+    $sourceContent = if ($null -eq $rawSourceContent) { '' } else { [string]$rawSourceContent }
     $managedBlock = "$beginMarker`n$sourceContent`n$endMarker`n"
 
     Set-Content -Path $Target -Value $managedBlock -NoNewline
@@ -63,8 +64,10 @@ function Merge-PromptFile {
 
     $beginMarker = "<!-- BEGIN cli-prompts:$Name -->"
     $endMarker = "<!-- END cli-prompts:$Name -->"
-    [string]$sourceContent = Get-Content -Path $Source -Raw
-    [string]$targetContent = Get-Content -Path $Target -Raw
+    $rawSourceContent = Get-Content -Path $Source -Raw
+    $rawTargetContent = Get-Content -Path $Target -Raw
+    $sourceContent = if ($null -eq $rawSourceContent) { '' } else { [string]$rawSourceContent }
+    $targetContent = if ($null -eq $rawTargetContent) { '' } else { [string]$rawTargetContent }
     $managedBlock = "$beginMarker`n$sourceContent`n$endMarker"
     $hasBeginMarker = $targetContent.Contains($beginMarker)
     $hasEndMarker = $targetContent.Contains($endMarker)
