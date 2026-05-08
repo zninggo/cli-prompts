@@ -51,6 +51,14 @@
 .\scripts\install.ps1 -Tool all
 ```
 
+### Windows cmd.exe
+
+```cmd
+scripts\install.cmd -Tool all
+```
+
+`install.cmd` 会自动优先调用 `pwsh`，没有 PowerShell 7 时回退到 Windows PowerShell。
+
 默认使用合并安装，保留用户已有内容，并维护一个可重复更新的 `cli-prompts` 标记区块。
 
 只安装 Claude Code：
@@ -71,10 +79,18 @@
 .\scripts\install.ps1 -Tool all -Mode overwrite
 ```
 
+```cmd
+scripts\install.cmd -Tool all -Mode overwrite
+```
+
 覆盖安装且不交互确认：
 
 ```powershell
 .\scripts\install.ps1 -Tool all -Mode overwrite -Force
+```
+
+```cmd
+scripts\install.cmd -Tool all -Mode overwrite -Force
 ```
 
 ### macOS / Linux

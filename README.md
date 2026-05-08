@@ -55,6 +55,12 @@ Windows 自动安装：
 .\scripts\install.ps1 -Tool all
 ```
 
+cmd.exe 用户也可以使用：
+
+```cmd
+scripts\install.cmd -Tool all
+```
+
 macOS / Linux 自动安装：
 
 ```bash
@@ -65,6 +71,10 @@ macOS / Linux 自动安装：
 
 ```powershell
 .\scripts\install.ps1 -Tool all -Mode overwrite
+```
+
+```cmd
+scripts\install.cmd -Tool all -Mode overwrite
 ```
 
 ```bash
