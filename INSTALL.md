@@ -8,6 +8,8 @@
 
 ## 支持的工具
 
+下面的源文件都是**完整可直接安装版本**，安装时不需要合并 `shared/` 或 `templates/`。
+
 | 工具 | 源文件 | 默认目标位置 |
 | --- | --- | --- |
 | Claude Code | `claude/CLAUDE.md` | `~/.claude/CLAUDE.md` |
@@ -76,7 +78,8 @@
 - 不读取或上传 token、API key、cookie、SSH key。
 - 不修改 MCP、hook、proxy、登录态或认证配置。
 - 不执行 git push、远程发布、删除仓库等高影响操作。
-- 不自动合并用户已有规则，只会整体复制对应文件。
+- 不读取或合并 `shared/`、`templates/`。
+- 不自动合并用户已有规则，只会整体复制对应工具目录中的完整提示词文件。
 
 ## 推荐 agent 行为
 

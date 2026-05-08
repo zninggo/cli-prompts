@@ -33,7 +33,11 @@ cli-prompts/
 
 ## 使用方式
 
-按需复制对应文件到各工具的全局配置位置，或把 `shared/` 中的规则合并进已有配置。
+`claude/`、`codex/`、`gemini/` 下的文件都是**完整可直接安装版本**，不需要再和 `shared/` 或 `templates/` 合并。
+
+- `shared/`：维护时复用的原则模块库，仅供参考。
+- `templates/`：给他人改造的脱敏模板，不参与自动安装。
+- 自动安装脚本只复制工具目录中的完整提示词文件。
 
 Windows 自动安装：
 
@@ -66,6 +70,6 @@ Copy-Item .\claude\CLAUDE.md "$env:USERPROFILE\.claude\CLAUDE.md"
 
 规则分三层：
 
-1. `shared/`：跨 CLI 通用原则。
-2. 工具目录：每个 CLI 的专属规则。
+1. 工具目录：每个 CLI 的完整可安装提示词。
+2. `shared/`：跨 CLI 通用原则，供维护工具目录文件时复用。
 3. `templates/`：给他人复用的脱敏模板。
