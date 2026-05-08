@@ -14,18 +14,40 @@
 
 ```text
 cli-prompts/
+  INSTALL.md   给 LLM/CLI agent 读取的环境自适应安装指南
   claude/      Claude Code 全局提示词
   codex/       Codex / OpenAI CLI 风格规则
   gemini/      Gemini CLI 风格规则
   shared/      多工具通用原则
   templates/   可复制改造的模板
+  scripts/     自动安装脚本
+```
+
+## 交给 LLM 自动配置
+
+把仓库地址发给任意 LLM/CLI agent，并告诉它：
+
+```text
+请读取 https://github.com/zninggo/cli-prompts 的 INSTALL.md，识别我的环境和已安装的 AI CLI 工具，然后按说明帮我配置全局提示词。写入已有配置前必须备份并征求确认。
 ```
 
 ## 使用方式
 
 按需复制对应文件到各工具的全局配置位置，或把 `shared/` 中的规则合并进已有配置。
 
-示例：
+Windows 自动安装：
+
+```powershell
+.\scripts\install.ps1 -Tool all
+```
+
+macOS / Linux 自动安装：
+
+```bash
+./scripts/install.sh --tool all
+```
+
+手动复制示例：
 
 ```powershell
 Copy-Item .\claude\CLAUDE.md "$env:USERPROFILE\.claude\CLAUDE.md"
